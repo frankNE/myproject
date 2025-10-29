@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-2-thread-1","id":1},{"content":"pool-2-thread-2","id":2},{"content":"pool-2-thread-3","id":3},{"content":"pool-2-thread-4","id":4},{"content":"pool-2-thread-5","id":5}];
+var items = [{"id":1,"group":1,"content":"examples\/users\/deleteUserByID[1:6]","start":1761713168740,"end":1761713170616,"title":"examples\/users\/deleteUserByID[1:6] 23:46:08.740-23:46:10.616 Validar eliminacion exitosa de un usuario con status code 200"},{"id":2,"group":2,"content":"examples\/users\/getUserByID[1:6]","start":1761713168740,"end":1761713170299,"title":"examples\/users\/getUserByID[1:6] 23:46:08.740-23:46:10.299 Validar consulta de usuario por ID con status code 200"},{"id":3,"group":3,"content":"examples\/users\/postUser[1:7]","start":1761713168745,"end":1761713169937,"title":"examples\/users\/postUser[1:7] 23:46:08.745-23:46:09.937 Validar creacion exitosa de un nuevo usuario con status code 201","className":"failed"},{"id":4,"group":4,"content":"examples\/users\/putUserByID[1:6]","start":1761713168745,"end":1761713170633,"title":"examples\/users\/putUserByID[1:6] 23:46:08.745-23:46:10.633 Validar actualizacion exitosa de un usuario con status code 200"},{"id":5,"group":5,"content":"examples\/users\/users[1:7]","start":1761713168745,"end":1761713169028,"title":"examples\/users\/users[1:7] 23:46:08.745-23:46:09.028 Validar consulta exitosa de todos los usuarios con status code 200","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
